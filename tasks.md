@@ -14,9 +14,9 @@ Está ótimo
 Acho que podemos tirar o serviço e deixar produtos da Microsoft para ficar menos técnico talvez 
  
 Ou nuvem da Microsoft 
- - [ ] App `tasks` criado
-- [ ] Adicionado em `INSTALLED_APPS`
-- [ ] Pasta `templates/tasks` criada
+ - [ x] App `tasks` criado
+- [ x] Adicionado em `INSTALLED_APPS`
+- [ x] Pasta `templates/tasks` criada
 
 ### **✅ TASK 1.2: Model Básico (8 min)**
 ```python
@@ -28,9 +28,9 @@ class Task(models.Model):
 ```
 
 **Checklist:**
-- [ ] Model Task criado
-- [ ] Migrations criadas (`makemigrations`)
-- [ ] Migrations aplicadas (`migrate`)
+- [ x] Model Task criado
+- [ x] Migrations criadas (`makemigrations`)
+- [ x] Migrations aplicadas (`migrate`)
 
 ### **✅ TASK 1.3: Admin Básico (7 min)**
 ```python
@@ -39,15 +39,15 @@ admin.site.register(Task)
 ```
 
 **Checklist:**
-- [ ] Task registrado no admin
-- [ ] Conseguir adicionar tarefas via admin
-- [ ] Ver tarefas na lista do admin
+- [x ] Task registrado no admin
+- [ x] Conseguir adicionar tarefas via admin
+- [ x] Ver tarefas na lista do admin
 
 ### **✅ TASK 1.4: Teste Final (5 min)**
 **Checklist:**
-- [ ] Servidor roda (`runserver`)
-- [ ] Acesso `http://localhost:8000/admin`
-- [ ] Criar 2-3 tarefas teste via admin
+- [ x] Servidor roda (`runserver`)
+- [ x] Acesso `http://localhost:8000/admin`
+- [ x] Criar 2-3 tarefas teste via admin
 
 ---
 
@@ -78,9 +78,9 @@ path('tasks/', TaskListView.as_view(), name='task_list')
 
 ### **✅ TASK 2.4: Teste (5 min)**
 **Checklist:**
-- [ ] Acesso `http://localhost:8000/tasks/`
-- [ ] Vejo tarefas criadas via admin
-- [ ] Lista funciona sem errors
+- [x ] Acesso `http://localhost:8000/tasks/`
+- [ x] Vejo tarefas criadas via admin
+- [ x] Lista funciona sem errors
 
 ---
 
