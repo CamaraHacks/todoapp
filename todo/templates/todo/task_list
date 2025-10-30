@@ -1,0 +1,5 @@
+<!-- tasks/task_list.html -->
+<h1>Minhas Tarefas</h1>
+{% for task in task_list %}
+  <p>{{ task.title }}</p>
+{% endfor %}

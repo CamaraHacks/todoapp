@@ -1,0 +1,11 @@
+<!-- tasks/task_form.html -->
+
+<html>
+  <body>
+   <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Criar</button>
+    </form>
+  </body>
+</html>
