@@ -9,7 +9,12 @@ python manage.py startapp tasks
 ```
 
 **Checklist:**
-- [ ] App `tasks` criado
+Está ótimo 
+ 
+Acho que podemos tirar o serviço e deixar produtos da Microsoft para ficar menos técnico talvez 
+ 
+Ou nuvem da Microsoft 
+ - [ ] App `tasks` criado
 - [ ] Adicionado em `INSTALLED_APPS`
 - [ ] Pasta `templates/tasks` criada
 
@@ -105,7 +110,7 @@ class TaskCreateView(CreateView):
 # tasks/urls.py
 path('new/', TaskCreateView.as_view(), name='task_create')
 ```
-
+	
 ```html
 <!-- Adicionar em task_list.html -->
 <a href="{% url 'task_create' %}">Nova Tarefa</a>
@@ -113,9 +118,9 @@ path('new/', TaskCreateView.as_view(), name='task_create')
 
 ### **✅ TASK 3.4: Teste (5 min)**
 **Checklist:**
-- [ ] Link "Nova Tarefa" funciona
-- [ ] Formulário aparece
-- [ ] Consigo criar tarefa e redireciona para lista
+- [x] Link "Nova Tarefa" funciona
+- [x] Formulário aparece
+- [x] Consigo criar tarefa e redireciona para lista
 
 ---
 
