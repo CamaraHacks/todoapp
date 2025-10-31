@@ -152,9 +152,9 @@ path('<int:pk>/edit/', TaskUpdateView.as_view(), name='task_update')
 
 ### **✅ TASK 4.4: Teste (5 min)**
 **Checklist:**
-- [ ] Description aparece nos forms
-- [ ] Checkbox "done" funciona
-- [ ] Edição mantém dados
+- [x] Description aparece nos forms
+- [X] Checkbox "done" funciona
+- [X] Edição mantém dados
 
 ---
 
