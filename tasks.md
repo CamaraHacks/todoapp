@@ -184,9 +184,9 @@ def get_queryset(self):
 
 ### **✅ TASK 5.4: Teste Final (5 min)**
 **Checklist:**
-- [ ] Tarefas ordenadas por data
-- [ ] Só mostra não concluídas
-- [ ] Estilo visual básico funciona
+- [x] Tarefas ordenadas por data
+- [x] Só mostra não concluídas
+- [x] Estilo visual básico funciona
 
 ---
 

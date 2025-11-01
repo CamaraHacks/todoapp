@@ -7,5 +7,9 @@
 <h1>Minhas Tarefas</h1>
 {% for task in task_list %}
 <p>{{ task.title }}</p>
+<style>
+done { text-decoration: line-through; }
+</style>
+
 {% endfor %}
 {% endblock %}

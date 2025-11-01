@@ -66,6 +66,9 @@ CREATE TABLE IF NOT EXISTS "auth_group" ("id" integer NOT NULL PRIMARY KEY AUTOI
 CREATE TABLE IF NOT EXISTS "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NULL, "is_superuser" bool NOT NULL, "username" varchar(150) NOT NULL UNIQUE, "last_name" varchar(150) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "first_name" varchar(150) NOT NULL);
 CREATE TABLE IF NOT EXISTS "django_session" ("session_key" varchar(40) NOT NULL PRIMARY KEY, "session_data" text NOT NULL, "expire_date" datetime NOT NULL);
 CREATE TABLE IF NOT EXISTS "todo_task" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "title" varchar(200) NOT NULL, "created_date" datetime NOT NULL, "done" bool NOT NULL, "description" text NOT NULL);
+INSERT INTO todo_task VALUES(1,'Teste','2025-10-31 23:56:17.858989',0,'O primeiro teste desse DB');
+INSERT INTO todo_task VALUES(2,'Minha tarefa','2025-11-01 03:46:49.368216',0,'Minha descrição');
+INSERT INTO todo_task VALUES(3,'Minha outra tarefa','2025-11-01 03:47:06.359689',0,'Minha outra descrição');
 DELETE FROM sqlite_sequence;
 INSERT INTO sqlite_sequence VALUES('django_migrations',20);
 INSERT INTO sqlite_sequence VALUES('django_admin_log',0);
@@ -73,7 +76,7 @@ INSERT INTO sqlite_sequence VALUES('django_content_type',7);
 INSERT INTO sqlite_sequence VALUES('auth_permission',28);
 INSERT INTO sqlite_sequence VALUES('auth_group',0);
 INSERT INTO sqlite_sequence VALUES('auth_user',0);
-INSERT INTO sqlite_sequence VALUES('todo_task',0);
+INSERT INTO sqlite_sequence VALUES('todo_task',3);
 CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
 CREATE INDEX "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
 CREATE INDEX "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
