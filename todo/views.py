@@ -11,6 +11,9 @@ class TasksListView(ListView):
     model = Task
     template_name = "todo/task_list.html"
 
+    def get_query_set(self):
+        return Task.objects.filter(done=False)
+
 class TaskCreateView(CreateView):
     model = Task
     fields = ["title", "description"]

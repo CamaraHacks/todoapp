@@ -6,3 +6,6 @@ class Task(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     done = models.BooleanField(default=False)
     description = models.TextField(blank=True)
+    
+    class Meta:
+        ordering = ['created_date']
