@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
+from django.utils import timezone
 
 from .models import Task
 
@@ -8,6 +9,8 @@ from .models import Task
 def toggle_task(request, pk):
     task = get_object_or_404(Task, id=pk)
     task.completed = not task.completed
+    if task.completed:
+        task.completed_date = timezone.now()
     task.save()
     return redirect('todo:task_list')
 
