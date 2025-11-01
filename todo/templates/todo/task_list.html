@@ -1,15 +1,78 @@
 {% extends "base__.html" %}
-
-{% block title %}Minhas tarefas {% endblock %}
+{% block title %}Minhas tarefas{% endblock %}
 
 {% block content %}
-<!-- tasks/task_list.html -->
-<h1>Minhas Tarefas</h1>
-{% for task in task_list %}
-<p>{{ task.title }}</p>
-<style>
-done { text-decoration: line-through; }
-</style>
+<div class="d-flex justify-between align-center mb-3">
+    <h1>Minhas Tarefas</h1>
+    <a href="{% url 'todo:task_create' %}" class="btn btn-primary">Nova Tarefa</a>
+</div>
 
+{% for task in task_list %}
+<div class="card task-item mb-2 priority-{{ task.priority }}">
+    <div class="d-flex align-center gap-2 p-2">
+        <!-- Checkbox -->
+        <form method="post" action="{% url 'todo:toggle_task' task.id %}" class="toggle-form">
+            {% csrf_token %}
+            <input type="checkbox" 
+                   {% if task.completed %}checked{% endif %}
+                   onchange="this.form.submit()"
+                   class="task-checkbox">
+        </form>
+        
+        <!-- Conteúdo da tarefa -->
+        <a href="{% url 'todo:task_update' task.id %}" class="flex-grow-1 task-content">
+            <div class="{% if task.completed %}text-decoration-line-through opacity-60{% endif %}">
+                <div class="d-flex align-center gap-2 mb-1">
+                    <span class="priority-badge {{ task.priority }}">
+                        {{ task.get_priority_display }}
+                    </span>
+                    <div class="task-title">{{ task.title }}</div>
+                </div>
+                
+                {% if task.description %}
+                    <div class="task-description">{{ task.description }}</div>
+                {% endif %}
+                
+                <div class="task-meta">
+                    <strong>Criado em:</strong> {{ task.created_date|date:"d/m/Y H:i" }}
+                    {% if task.completed %}
+                        | <strong>Concluído em:</strong> {{ task.updated_at|date:"d/m/Y H:i" }}
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        
+        <a href="{% url 'todo:task_update' task.id %}" class="btn btn-outline btn-sm">
+            Editar
+        </a>
+    </div>
+</div>
+{% empty %}
+<div class="card">
+    <p class="text-center p-3">Nenhuma tarefa encontrada.</p>
+</div>
 {% endfor %}
+
+<style>
+/* Estilos para as prioridades */
+.priority-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.priority-high { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+.priority-urgent { background: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
+.priority-medium { background: #dbeafe; color: #2563eb; border: 1px solid #bfdbfe; }
+.priority-low { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+
+/* Borda lateral por prioridade */
+.priority-high { border-left: 4px solid #dc2626; }
+.priority-urgent { border-left: 4px solid #d97706; }
+.priority-medium { border-left: 4px solid #2563eb; }
+.priority-low { border-left: 4px solid #16a34a; }
+</style>
 {% endblock %}
