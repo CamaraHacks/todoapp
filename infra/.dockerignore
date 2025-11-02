@@ -1,0 +1,6 @@
+# todoapp/.dockerignore
+__pycache__
+*.pyc
+*.sqlite3
+*.backupsql
+*.md
