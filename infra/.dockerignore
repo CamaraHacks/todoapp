@@ -1,6 +1,19 @@
-# todoapp/.dockerignore
-__pycache__
+infra/
+
+# Cache e arquivos de IDE
+__pycache__/
 *.pyc
+.git
+.gitignore
+.vscode/
+
+# Arquivos de banco de dados e backups
 *.sqlite3
-*.backupsql
-*.md
+*.sqlite3_corrupted
+*.sql
+db.backupsql
+dump/
+
+# Documentação
+README.md
+tasks.md
