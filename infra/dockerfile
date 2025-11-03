@@ -5,7 +5,8 @@ WORKDIR /app
 # 1. Copia SÓ os arquivos de dependência
 COPY pyproject.toml uv.lock ./
 
-# 2. Instala o UV e as dependências (AGORA VAI FUNCIONAR)
+# ----------------------------------------------------
+# 2. Instala o UV e as dependências (Django, Gunicorn, etc.)
 RUN pip install uv
 RUN uv sync --frozen
 
@@ -14,8 +15,8 @@ COPY manage.py ./
 COPY tarefas/ ./tarefas/
 COPY todo/ ./todo/
 
-# 4. Roda o collectstatic (AGORA VAI FUNCIONAR)
-# Esta linha coleta seu CSS/JS para o WhiteNoise servir
+# 4. Roda o collectstatic
+# (Agora vai funcionar, porque o Django foi instalado no passo 2)
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
