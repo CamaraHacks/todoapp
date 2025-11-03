@@ -5,21 +5,22 @@ WORKDIR /app
 # 1. Copia SÓ os arquivos de dependência
 COPY pyproject.toml uv.lock ./
 
-# ----------------------------------------------------
-# 2. Instala o UV e as dependências (Django, Gunicorn, etc.)
+# 2. Instala o UV e as dependências
+# Isto VAI criar um .venv em /app/.venv e instalar tudo lá
 RUN pip install uv
-RUN uv sync --frozen --system
+RUN uv sync --frozen
 
 # 3. Copia o resto do seu código
 COPY manage.py ./
 COPY tarefas/ ./tarefas/
 COPY todo/ ./todo/
 
-# 4. Roda o collectstatic
-# (Agora vai funcionar, porque o Django foi instalado no passo 2)
-RUN python manage.py collectstatic --noinput
+# 4. Roda o collectstatic USANDO O PYTHON DO .VENV
+#    Note o prefixo '.venv/bin/python'
+RUN .venv/bin/python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-# 5. Roda o migrate e inicia o servidor Gunicorn
-CMD sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 tarefas.wsgi:application"
+# 5. Roda o migrate e inicia o servidor Gunicorn USANDO O .VENV
+#    Tanto o python quanto o gunicorn estão dentro de .venv/bin/
+CMD sh -c ".venv/bin/python manage.py migrate && .venv/bin/gunicorn --bind 0.0.0.0:8000 tarefas.wsgi:application"
