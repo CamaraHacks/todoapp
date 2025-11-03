@@ -32,6 +32,11 @@ ALLOWED_HOSTS = ['moaning-ivie-noneless-06dbad53.koyeb.app',
                  '127.0.0.1',
                  ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://moaning-ivie-noneless-06dbad53.koyeb.app',
+    'https://todoapp-production-59e6.up.railway.app',
+]
+
 
 # Application definition
 
