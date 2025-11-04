@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.utils import timezone
 
@@ -34,3 +34,10 @@ class TaskUpdateView(UpdateView):
     template_name = "todo/task_form.html"
     fields = ["title","priority", "description","completed"]
     success_url = reverse_lazy("todo:task_list")
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    template_name = "todo/task_confirm_delete.html"
+    success_url = reverse_lazy("todo:task_list")
+    
+

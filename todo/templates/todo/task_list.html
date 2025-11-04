@@ -42,9 +42,21 @@
             </div>
         </a>
         
-        <a href="{% url 'todo:task_update' task.id %}" class="btn btn-outline btn-sm">
-            Editar
-        </a>
+        <!-- Botões de ação -->
+        <div class="d-flex align-center gap-1">
+            <a href="{% url 'todo:task_update' task.id %}" class="btn btn-outline btn-sm">
+                Editar
+            </a>
+            
+            <!-- Formulário de Delete -->
+            <form method="post" action="{% url 'todo:task_delete' task.id %}" class="delete-form">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm" 
+                        onclick="return confirm('Tem certeza que deseja deletar a tarefa \"{{ task.title }}\"?')">
+                    Deletar
+                </button>
+            </form>
+        </div>
     </div>
 </div>
 {% empty %}
@@ -74,5 +86,15 @@
 .priority-urgent { border-left: 4px solid #d97706; }
 .priority-medium { border-left: 4px solid #2563eb; }
 .priority-low { border-left: 4px solid #16a34a; }
+
+/* Estilos para os formulários */
+.toggle-form, .delete-form {
+    margin: 0;
+}
+
+.delete-form .btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
 </style>
 {% endblock %}
