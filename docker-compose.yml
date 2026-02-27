@@ -1,25 +1,31 @@
-version: '3.8'
-
 services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: todoapp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 5
+
   web:
-    # 1. 'build' diz ao Compose como construir sua imagem
     build:
-      context: .  # Usa o diretório atual (raiz do projeto) como contexto
-      dockerfile: infra/dockerfile # Aponta para o seu Dockerfile
-    
-    # 2. 'ports' mapeia a porta do seu computador para a porta do container
+      context: .
+      dockerfile: infra/dockerfile
     ports:
       - "8000:8000"
-
-    # 3. 'volumes' é a mágica!
-    # Sincroniza o código do seu computador ('.') com a pasta '/app' no container
-    # Qualquer mudança no seu código é refletida DENTRO do container.
-    # Isso também garante que o 'db.sqlite3' criado no container
-    # seja, na verdade, o arquivo na raiz do seu projeto.
     volumes:
       - .:/app
-
-    # 4. 'command' (Opcional, mas recomendado para dev)
-    # Substitui o 'CMD' do Dockerfile para garantir que o Django
-    # rode com o auto-reloader.
     command: ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
