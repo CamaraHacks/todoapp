@@ -7,7 +7,6 @@ from .models import Task
 
 
 
-# Create your views here.
 @login_required
 def toggle_task(request, pk):
     task = get_object_or_404(Task, id=pk)
