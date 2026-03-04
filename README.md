@@ -11,6 +11,7 @@ Um sistema simples e eficiente de gerenciamento de tarefas desenvolvido com **Dj
   - 🟡 Média
   - 🔴 Alta
   - ⚡ Urgente
+  
 - **Controle de Status**: Marcar tarefas como concluídas (com registro automático da data de conclusão).
 - **Interface Responsiva**: Templates HTML limpos e organizados.
 - **Infraestrutura Pronta**: Suporte total a Docker e PostgreSQL.
