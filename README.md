@@ -1,4 +1,4 @@
-# ✅ TodoApp - Gerenciador de Tarefas
+# ✅ TodoApp(Anytask) - Gerenciador de Tarefas
 
 Um sistema simples e eficiente de gerenciamento de tarefas desenvolvido com **Django 5.2** e **Python 3.13**, utilizando o moderno gerenciador de pacotes **uv**.
 
